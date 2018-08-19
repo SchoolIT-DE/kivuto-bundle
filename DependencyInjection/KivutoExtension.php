@@ -15,6 +15,9 @@ class KivutoExtension extends Extension {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter('kivuto.endpoint', $config['endpoint']);
+        $container->setParameter('kivuto.secret_key', $config['secret_key']);
+
         if (isset($config['fake']) && $config['fake']['enabled']) {
             $definition = new Definition(FakeKivutoClient::class);
             $definition->setArguments([
