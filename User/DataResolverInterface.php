@@ -1,6 +1,6 @@
 <?php
 
-namespace SchoolIT\KivutoBundle\User;
+namespace SchulIT\KivutoBundle\User;
 
 interface DataResolverInterface {
     public function getUsername();

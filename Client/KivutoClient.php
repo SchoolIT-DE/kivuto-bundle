@@ -1,9 +1,9 @@
 <?php
 
-namespace SchoolIT\KivutoBundle\Client;
+namespace SchulIT\KivutoBundle\Client;
 
 use GuzzleHttp\Client;
-use SchoolIT\KivutoBundle\User\DataResolverInterface;
+use SchulIT\KivutoBundle\User\DataResolverInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Symfony\Component\HttpFoundation\RequestStack;

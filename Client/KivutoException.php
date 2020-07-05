@@ -1,6 +1,6 @@
 <?php
 
-namespace SchoolIT\KivutoBundle\Client;
+namespace SchulIT\KivutoBundle\Client;
 
 class KivutoException extends \Exception {
 

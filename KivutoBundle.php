@@ -1,6 +1,6 @@
 <?php
 
-namespace SchoolIT\KivutoBundle;
+namespace SchulIT\KivutoBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

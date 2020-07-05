@@ -1,10 +1,10 @@
 <?php
 
-namespace SchoolIT\KivutoBundle\DependencyInjection;
+namespace SchulIT\KivutoBundle\DependencyInjection;
 
-use SchoolIT\KivutoBundle\Client\FakeKivutoClient;
-use SchoolIT\KivutoBundle\Client\KivutoClient;
-use SchoolIT\KivutoBundle\Client\KivutoClientInterface;
+use SchulIT\KivutoBundle\Client\FakeKivutoClient;
+use SchulIT\KivutoBundle\Client\KivutoClient;
+use SchulIT\KivutoBundle\Client\KivutoClientInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;

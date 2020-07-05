@@ -1,8 +1,8 @@
 <?php
 
-namespace SchoolIT\KivutoBundle\Client;
+namespace SchulIT\KivutoBundle\Client;
 
-use SchoolIT\KivutoBundle\User\DataResolverInterface;
+use SchulIT\KivutoBundle\User\DataResolverInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class FakeKivutoClient extends AbstractKivutoClient {

@@ -1,6 +1,6 @@
 <?php
 
-namespace SchoolIT\KivutoBundle\Client;
+namespace SchulIT\KivutoBundle\Client;
 
 interface KivutoClientInterface {
     public function getRedirectUrl();
