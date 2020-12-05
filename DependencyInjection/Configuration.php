@@ -11,8 +11,8 @@ class Configuration implements ConfigurationInterface {
      * @inheritdoc
      */
     public function getConfigTreeBuilder() {
-        $treeBuilder = new TreeBuilder();
-        $root = $treeBuilder->root('kivuto');
+        $treeBuilder = new TreeBuilder('kivuto');
+        $root = $treeBuilder->getRootNode();
 
         $root->children()
             ->scalarNode('endpoint')
