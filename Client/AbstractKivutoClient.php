@@ -7,13 +7,15 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 abstract class AbstractKivutoClient implements KivutoClientInterface {
 
+    protected $account;
     protected $endpoint;
     protected $secretKey;
 
     protected $dataResolver;
     protected $requestStack;
 
-    public function __construct($endpoint, $secretKey, DataResolverInterface $dataResolver, RequestStack $requestStack) {
+    public function __construct($account, $endpoint, $secretKey, DataResolverInterface $dataResolver, RequestStack $requestStack) {
+        $this->account = $account;
         $this->endpoint = $endpoint;
         $this->secretKey = $secretKey;
 
@@ -21,9 +23,9 @@ abstract class AbstractKivutoClient implements KivutoClientInterface {
         $this->requestStack = $requestStack;
     }
 
-    protected function getRequestData() {
-        $data = [
-            'account' => null,
+    protected function getRequestData(): array {
+        return [
+            'account' => $this->account,
             'username' => $this->dataResolver->getUsername(),
             'key' => $this->secretKey,
             'last_name' => mb_substr($this->dataResolver->getLastname(), 0, 50),
@@ -32,8 +34,6 @@ abstract class AbstractKivutoClient implements KivutoClientInterface {
             'academic_statuses' => $this->dataResolver->getAcademicStatus(),
             'email' => mb_substr($this->dataResolver->getEmail(), 0, 100)
         ];
-
-        return http_build_query($data);
     }
 
     public abstract function getRedirectUrl();

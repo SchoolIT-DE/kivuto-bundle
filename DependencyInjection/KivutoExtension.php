@@ -15,12 +15,14 @@ class KivutoExtension extends Extension {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter('kivuto.account', $config['account']);
         $container->setParameter('kivuto.endpoint', $config['endpoint']);
         $container->setParameter('kivuto.secret_key', $config['secret_key']);
 
         if (isset($config['fake']) && $config['fake']['enabled']) {
             $definition = new Definition(FakeKivutoClient::class);
             $definition->setArguments([
+                $config['fake']['account'],
                 $config['fake']['endpoint'],
                 $config['fake']['secret_key'],
                 new Reference($config['data_resolver']),
@@ -29,6 +31,7 @@ class KivutoExtension extends Extension {
         } else {
             $definition = new Definition(KivutoClient::class);
             $definition->setArguments([
+                $config['account'],
                 $config['endpoint'],
                 $config['secret_key'],
                 new Reference($config['guzzle']),

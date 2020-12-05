@@ -13,8 +13,8 @@ class KivutoClient extends AbstractKivutoClient {
     private $httpClient;
     private $logger;
 
-    public function __construct($endpoint, $secretKey, Client $httpClient, DataResolverInterface $dataResolver, RequestStack $requestStack, LoggerInterface $logger = null) {
-        parent::__construct($endpoint, $secretKey, $dataResolver, $requestStack);
+    public function __construct($account, $endpoint, $secretKey, Client $httpClient, DataResolverInterface $dataResolver, RequestStack $requestStack, LoggerInterface $logger = null) {
+        parent::__construct($account, $endpoint, $secretKey, $dataResolver, $requestStack);
 
         $this->httpClient = $httpClient;
         $this->logger = $logger ?? new NullLogger();
@@ -22,9 +22,13 @@ class KivutoClient extends AbstractKivutoClient {
 
     public function getRedirectUrl() {
         $requestData = $this->getRequestData();
-        $url = sprintf('%s?%s', $this->endpoint, $requestData);
-
-        $response = $this->httpClient->get($url);
+        $response = $this->httpClient->post($this->endpoint, [
+            'body' => json_encode($requestData),
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ]
+        ]);
 
         $statusCode = $response->getStatusCode();
         $content = $response->getBody()->getContents();

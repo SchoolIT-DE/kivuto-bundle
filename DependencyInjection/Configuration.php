@@ -15,6 +15,9 @@ class Configuration implements ConfigurationInterface {
         $root = $treeBuilder->getRootNode();
 
         $root->children()
+            ->scalarNode('account')
+                ->isRequired()
+            ->end()
             ->scalarNode('endpoint')
                 ->isRequired()
             ->end()
@@ -39,6 +42,9 @@ class Configuration implements ConfigurationInterface {
                     ->end()
                     ->scalarNode('secret_key')
                         ->defaultValue('1234')
+                    ->end()
+                    ->scalarNode('account')
+                        ->defaultValue('foo')
                     ->end()
                 ->end()
             ->end();
